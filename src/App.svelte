@@ -1,18 +1,23 @@
 <script>
+	import Pin from "./Pin.svelte";
 	import { onMount } from "svelte";
 
 	import Map from "ol/Map";
 	import View from "ol/View";
 	import TileLayer from "ol/layer/Tile";
 	import OSM from "ol/source/OSM";
-	import Vector from "ol/layer/Vector";
-	import Point from "ol/geom/Point";
-	import VectorSource from "ol/source/Vector";
-	import Feature from "ol/Feature";
-
 	import { fromLonLat } from "ol/proj";
 
 	let map;
+
+	let pins = [
+		{
+			coords: [7.39416667, 46.94138889],
+		},
+		{
+			coords: [7.39888889, 46.94138889],
+		},
+	];
 
 	const createMap = () => {
 		map = new Map({
@@ -29,23 +34,11 @@
 		});
 	};
 
-	const addVectorLayer = () => {
-		var layer = new Vector({
-			source: new VectorSource({
-				features: [
-					new Feature({
-						geometry: new Point(fromLonLat([7.4331, 46.9428])),
-					}),
-				],
-			}),
-		});
-
-		map.addLayer(layer);
-	};
+	const addPins = () => {};
 
 	onMount(() => {
 		createMap();
-		addVectorLayer();
+		addPins();
 	});
 </script>
 
@@ -63,4 +56,9 @@
 
 <main>
 	<div id="map" />
+	<div style="display: none;">
+		{#each pins as data}
+			<Pin {map} {data} />
+		{/each}
+	</div>
 </main>
