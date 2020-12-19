@@ -56,7 +56,7 @@
 
 <main>
 	<div id="map" />
-	<div style="display: none;">
+	<div>
 		{#each pins as data}
 			<Pin {map} {data} />
 		{/each}
