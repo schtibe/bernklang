@@ -8,14 +8,9 @@
 	import OSM from "ol/source/OSM";
 	import { fromLonLat } from "ol/proj";
 
-	let map;
+	import pinData from "./data.json";
 
-	let pins = [
-		{
-			coords: [7.39416667, 46.94138889],
-			soundFile: "2020-12-06.mp3",
-		},
-	];
+	let map;
 
 	const createMap = () => {
 		map = new Map({
@@ -55,7 +50,7 @@
 <main>
 	<div id="map" />
 	<div>
-		{#each pins as data}
+		{#each pinData as data}
 			<Pin {map} {data} />
 		{/each}
 	</div>
