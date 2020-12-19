@@ -3,6 +3,7 @@
   export let data;
 
   import Overlay from "ol/Overlay";
+  import Tooltip from "./Tooltip.svelte";
   import { fromLonLat } from "ol/proj";
   import { afterUpdate, onMount } from "svelte";
 
@@ -29,7 +30,6 @@
   };
 
   function toggleTooltip() {
-    console.log("toggle tooltip");
     isTooltipShown = !isTooltipShown;
   }
 
@@ -38,7 +38,6 @@
       if (map) {
         clearInterval(interval);
         addMarker();
-        console.log("clear interval");
 
         createPopper(pinElement, popoverElement, {
           placement: "top",
@@ -57,14 +56,6 @@
     color: rgb(211, 66, 9);
     fill: currentColor;
     cursor: pointer;
-  }
-
-  .tooltip {
-    z-index: 1000;
-    background: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   }
 
   .hide {
@@ -86,9 +77,11 @@
   </div>
   <div
     bind:this={popoverElement}
-    class="tooltip"
     class:show={isTooltipShown}
     class:hide={!isTooltipShown}>
-    I'm the Tooltip
+    <Tooltip
+      date="2020-12-03"
+      on:close={toggleTooltip}
+      audioFileName={data.soundFile} />
   </div>
 </main>
