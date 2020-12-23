@@ -41,10 +41,24 @@
 		width: 100vw;
 		height: 100vh;
 	}
+
+	#title {
+		position: fixed;
+		z-index: 10;
+		top: 0;
+		left: calc(50% - 200px);
+		width: 400px;
+		background: rgba(255, 255, 255, 0.6);
+		text-align: center;
+		border-radius: 5px;
+	}
 </style>
 
 <main>
 	<div id="map" />
+	<div id="title">
+		<h1>Bernklang</h1>
+	</div>
 	<div>
 		{#each pinData as data}
 			<Pin {map} {data} />
