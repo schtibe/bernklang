@@ -91,7 +91,7 @@
     class:show={isTooltipShown}
     class:hide={!isTooltipShown}>
     <Tooltip
-      date="2020-12-03"
+      date={data.date}
       on:close={toggleTooltip}
       audioFileName={data.soundFile} />
   </div>
