@@ -1,4 +1,5 @@
 <script>
+	import "ol/ol.css";
 	import Pin from "./Pin.svelte";
 	import { onMount } from "svelte";
 
@@ -36,11 +37,6 @@
 </script>
 
 <style>
-	body {
-		margin: 0;
-		padding: 0;
-	}
-
 	#map {
 		width: 100vw;
 		height: 100vh;
