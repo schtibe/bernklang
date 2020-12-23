@@ -29,6 +29,20 @@
     marker.element.addEventListener("click", toggleTooltip);
   };
 
+  const addPopup = () => {
+    const popup = new Overlay({
+      element: popoverElement,
+      position: pos,
+    });
+
+    createPopper(pinElement, popoverElement, {
+      placement: "top",
+      animation: true,
+    });
+
+    map.addOverlay(popup);
+  };
+
   function toggleTooltip() {
     isTooltipShown = !isTooltipShown;
   }
@@ -38,10 +52,7 @@
       if (map) {
         clearInterval(interval);
         addMarker();
-
-        createPopper(pinElement, popoverElement, {
-          placement: "top",
-        });
+        addPopup();
       }
     }, 10);
   });
