@@ -52,6 +52,11 @@
 		text-align: center;
 		border-radius: 5px;
 	}
+
+	h1 {
+		padding: 0rem 0.1rem;
+		line-height: 0.5rem;
+	}
 </style>
 
 <main>
