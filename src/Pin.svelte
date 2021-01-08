@@ -104,9 +104,11 @@
     bind:this={popoverElement}
     class:show={isTooltipShown}
     class:hide={!isTooltipShown}>
-    <Tooltip
-      date={data.date}
-      on:close={toggleTooltip}
-      audioFileName={data.soundFile} />
+    {#if isTooltipShown}
+      <Tooltip
+        date={data.date}
+        on:close={toggleTooltip}
+        audioFileName={data.soundFile} />
+    {/if}
   </div>
 </main>
