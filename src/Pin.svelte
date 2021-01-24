@@ -1,15 +1,18 @@
 <script>
-  export let map;
   export let data;
 
   import Overlay from "ol/Overlay";
   import Tooltip from "./Tooltip.svelte";
   import { fromLonLat } from "ol/proj";
-  import { afterUpdate, onMount } from "svelte";
+  import { afterUpdate, onMount, getContext } from "svelte";
 
   import { createPopper } from "@popperjs/core";
 
   const pos = fromLonLat(data.coords);
+
+  const { getMap } = getContext("map");
+
+  let map;
 
   let interval = null;
 
@@ -49,6 +52,7 @@
 
   afterUpdate(() => {
     interval = setInterval(() => {
+      map = getMap();
       if (map) {
         clearInterval(interval);
         addMarker();
@@ -104,9 +108,11 @@
     bind:this={popoverElement}
     class:show={isTooltipShown}
     class:hide={!isTooltipShown}>
-    <Tooltip
-      date={data.date}
-      on:close={toggleTooltip}
-      audioFileName={data.soundFile} />
+    {#if isTooltipShown}
+      <Tooltip
+        date={data.date}
+        on:close={toggleTooltip}
+        audioFileName={data.soundFile} />
+    {/if}
   </div>
 </main>

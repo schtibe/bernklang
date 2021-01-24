@@ -1,7 +1,7 @@
 <script>
 	import "ol/ol.css";
 	import Pin from "./Pin.svelte";
-	import { onMount } from "svelte";
+	import { onMount, setContext } from "svelte";
 
 	import Map from "ol/Map";
 	import View from "ol/View";
@@ -33,6 +33,10 @@
 	onMount(() => {
 		createMap();
 		addPins();
+	});
+
+	setContext("map", {
+		getMap: () => map,
 	});
 </script>
 
@@ -66,7 +70,7 @@
 	</div>
 	<div>
 		{#each pinData as data}
-			<Pin {map} {data} />
+			<Pin {data} />
 		{/each}
 	</div>
 </main>
