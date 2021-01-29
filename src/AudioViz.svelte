@@ -148,6 +148,7 @@
         on:mouseout={clearHover}
         on:mouseover={() => hoverUntil(blockIndex)}
         on:click={() => seek(blockIndex)}
+        on:touchend={clearHover}
       >
         <div />
       </div>
