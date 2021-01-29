@@ -41,8 +41,8 @@
     return filteredData.map((n) => n * multiplier);
   }
 
-  const visualizeAudio = (url) => {
-    fetch(url)
+  const visualizeAudio = () => {
+    fetch(audioFile)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -133,7 +133,7 @@
     clearInterval(updateInterval);
   }
 
-  visualizeAudio(audioFile);
+  //visualizeAudio(audioFile);
 </script>
 
 <div class="wrapper">
@@ -163,6 +163,7 @@
   on:play={onPlay}
   on:pause={onPause}
   on:ended={onEnded}
+  on:canplay={visualizeAudio}
 >
   <track kind="captions" />
 </audio>
