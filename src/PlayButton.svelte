@@ -1,5 +1,6 @@
 <script>
   export let isPlaying;
+  export let isLoaded;
 
   import { createEventDispatcher } from "svelte";
 
@@ -10,7 +11,11 @@
   }
 </script>
 
-<button on:click={togglePlay} class:playing={isPlaying}>
+<button
+  on:click={togglePlay}
+  class:playing={isPlaying}
+  class:disabled={!isLoaded}
+>
   {#if isPlaying}
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +57,10 @@
 
   button:hover {
     background: rgb(255, 163, 87);
+  }
+
+  button.disabled {
+    background: grey;
   }
 
   button svg {

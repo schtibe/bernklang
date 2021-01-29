@@ -15,6 +15,7 @@
   let domBlocksPlayed = [];
   let domBlocksHovered = [];
   let isPlaying = false;
+  let isLoaded = false;
 
   let updateInterval;
 
@@ -42,6 +43,7 @@
   }
 
   const visualizeAudio = () => {
+    isLoaded = true;
     fetch(audioFile)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {
@@ -137,7 +139,7 @@
 </script>
 
 <div class="wrapper">
-  <PlayButton {isPlaying} on:togglePlay={togglePlay} />
+  <PlayButton {isPlaying} on:togglePlay={togglePlay} {isLoaded} />
   <div class="visualizer" id="visualizer">
     {#each dataBlocks as block, blockIndex}
       <div
