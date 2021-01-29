@@ -16,14 +16,12 @@
 </script>
 
 <div class="tooltip">
-  <div class="flex" on:click={close}>
-    <div class="date">{date}</div>
-
-    <div class="close">
-      <Close />
-    </div>
+  <div class="close">
+    <Close on:close={close} />
   </div>
-  <div class="mt-4">
+
+  <div class="date">{date}</div>
+  <div class="audio-viz">
     <AudioViz {audioFile} />
   </div>
 </div>
@@ -47,19 +45,13 @@
     font-size: 1.5rem;
   }
 
-  .flex {
-    display: flex;
-  }
-
-  .justify-between {
-    justify-content: space-between;
-  }
-
-  .mt-4 {
-    margin-top: 1rem;
+  .audio-viz {
+    margin-top: 2rem;
   }
 
   .close {
-    margin-left: auto;
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 </style>
