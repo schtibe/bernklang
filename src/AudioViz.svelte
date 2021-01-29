@@ -43,7 +43,6 @@
   }
 
   const visualizeAudio = () => {
-    isLoaded = true;
     fetch(audioFile)
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {
@@ -54,6 +53,7 @@
       })
       .then((audioBuffer) => {
         dataBlocks = normalizeData(filterData(audioBuffer));
+        isLoaded = true;
       });
   };
 
