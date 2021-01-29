@@ -4,6 +4,7 @@
 
   import Close from "./Close.svelte";
   import { createEventDispatcher } from "svelte";
+  import AudioViz from "./AudioViz.svelte";
 
   const audioFile = `assets/sounds/${audioFileName}`;
 
@@ -13,6 +14,19 @@
     dispatch("close");
   }
 </script>
+
+<div class="tooltip">
+  <div class="flex" on:click={close}>
+    <div class="date">{date}</div>
+
+    <div class="close">
+      <Close />
+    </div>
+  </div>
+  <div class="mt-4">
+    <AudioViz {audioFile} />
+  </div>
+</div>
 
 <style>
   .tooltip {
@@ -24,6 +38,13 @@
     margin-bottom: 0.5em;
     display: flex;
     flex-direction: column;
+    min-width: 300px;
+  }
+
+  .date {
+    text-align: center;
+    flex-grow: 1;
+    font-size: 1.5rem;
   }
 
   .flex {
@@ -37,20 +58,8 @@
   .mt-4 {
     margin-top: 1rem;
   }
+
+  .close {
+    margin-left: auto;
+  }
 </style>
-
-<main>
-  <div class="tooltip">
-    <div class="flex justify-between" on:click={close}>
-      <div>{date}</div>
-
-      <Close />
-    </div>
-    <audio class="mt-4" controls src={audioFile}>
-      Your browser does not support the
-      <code>audio</code>
-      element.
-      <track kind="captions" />
-    </audio>
-  </div>
-</main>
