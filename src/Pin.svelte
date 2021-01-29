@@ -1,3 +1,7 @@
+<script context="module">
+  let closeLastOpen = () => {};
+</script>
+
 <script>
   export let data;
 
@@ -48,6 +52,13 @@
 
   function toggleTooltip() {
     isTooltipShown = !isTooltipShown;
+    if (isTooltipShown) {
+      closeLastOpen();
+    }
+
+    closeLastOpen = () => {
+      isTooltipShown = false;
+    };
   }
 
   afterUpdate(() => {
