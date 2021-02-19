@@ -140,7 +140,7 @@
 
 <div class="wrapper">
   <PlayButton {isPlaying} on:togglePlay={togglePlay} {isLoaded} />
-  <div class="visualizer" id="visualizer">
+  <div class="visualizer" id="visualizer" class:not-loaded={!isLoaded}>
     {#each dataBlocks as block, blockIndex}
       <div
         class="visualizerBlock"
@@ -182,6 +182,11 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+  }
+
+  .visualizer.not-loaded {
+    animation: loading-anim 0.5s infinite alternate;
+    border-radius: 5px;
   }
 
   .visualizerBlock {

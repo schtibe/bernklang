@@ -75,3 +75,13 @@ button:focus {
 h1 {
 	font-size: 3rem;
 }
+
+@keyframes loading-anim {
+	from {
+		background-color: white;
+	}
+
+	to {
+		background-color: rgb(197, 197, 197);
+	}
+}

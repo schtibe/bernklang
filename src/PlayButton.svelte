@@ -15,6 +15,7 @@
   on:click={togglePlay}
   class:playing={isPlaying}
   class:disabled={!isLoaded}
+  disabled={!isLoaded}
 >
   {#if isPlaying}
     <svg
@@ -60,7 +61,7 @@
   }
 
   button.disabled {
-    background: grey;
+    animation: loading-anim 0.5s infinite alternate;
   }
 
   button svg {
