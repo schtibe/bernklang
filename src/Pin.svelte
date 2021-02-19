@@ -54,11 +54,15 @@
     isTooltipShown = !isTooltipShown;
     if (isTooltipShown) {
       closeLastOpen();
-    }
 
-    closeLastOpen = () => {
-      isTooltipShown = false;
-    };
+      // register function that closes the last shown
+      closeLastOpen = () => {
+        isTooltipShown = false;
+      };
+    } else {
+      // remove the function, otherwise we can't reopen the same one
+      closeLastOpen = () => {};
+    }
   }
 
   afterUpdate(() => {
