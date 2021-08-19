@@ -5,7 +5,9 @@
 
   import { onDestroy } from "svelte";
 
-  onDestroy(() => {});
+  onDestroy(() => {
+    clearInterval(updateInterval);
+  });
 
   const SAMPLES = 70;
   const UPDATE_INTERVAL = 250;
