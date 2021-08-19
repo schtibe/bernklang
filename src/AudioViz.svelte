@@ -1,3 +1,7 @@
+<script context="module">
+  let current;
+</script>
+
 <script>
   export let audioFile;
 
@@ -121,6 +125,7 @@
   }
 
   function onPlay() {
+    stopOthers();
     isPlaying = true;
     updateInterval = setInterval(() => {
       updateVisualizer();
@@ -135,6 +140,14 @@
   function onEnded() {
     isPlaying = false;
     clearInterval(updateInterval);
+  }
+
+  function stopOthers() {
+    if (current && current !== audioElement) {
+      console.log(current);
+      current.pause();
+    }
+    current = audioElement;
   }
 
   //visualizeAudio(audioFile);
