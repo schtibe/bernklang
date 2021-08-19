@@ -96,7 +96,7 @@
     <Tooltip
       date={data.date}
       on:close={toggleTooltip}
-      audioFileName={data.soundFile}
+      audioFileNames={data.soundFiles}
     />
   {/if}
 </div>

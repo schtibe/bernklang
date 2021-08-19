@@ -1,12 +1,12 @@
 <script>
   export let date;
-  export let audioFileName;
+  export let audioFileNames;
 
   import Close from "./Close.svelte";
   import { createEventDispatcher } from "svelte";
   import AudioViz from "./AudioViz.svelte";
 
-  const audioFile = `assets/sounds/${audioFileName}`;
+  const audioFiles = audioFileNames.map((name) => `assets/sounds/${name}`);
 
   const dispatch = createEventDispatcher();
 
@@ -22,7 +22,9 @@
 
   <div class="date">{date}</div>
   <div class="audio-viz">
-    <AudioViz {audioFile} />
+    {#each audioFiles as audioFile}
+      <AudioViz {audioFile} />
+    {/each}
   </div>
 </div>
 
