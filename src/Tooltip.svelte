@@ -21,11 +21,11 @@
   </div>
 
   <div class="date">{date}</div>
-  <div class="audio-viz">
-    {#each audioFiles as audioFile}
+  {#each audioFiles as audioFile}
+    <div class="audio-viz">
       <AudioViz {audioFile} />
-    {/each}
-  </div>
+    </div>
+  {/each}
 </div>
 
 <style>
