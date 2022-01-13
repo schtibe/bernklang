@@ -9,7 +9,7 @@
 </script>
 
 <div>
-  <div id="title">
+  <div id="title" class="flex mt-4 bg-grey">
     <button on:click={toggleDrawer}>
       <div>
         <div class="space">&nbsp;</div>
