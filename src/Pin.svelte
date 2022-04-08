@@ -93,11 +93,7 @@
   class:hide={!isTooltipShown}
 >
   {#if isTooltipShown}
-    <Tooltip
-      date={data.date}
-      on:close={toggleTooltip}
-      audioFileNames={data.soundFiles}
-    />
+    <Tooltip on:close={toggleTooltip} data={data.soundFiles} />
   {/if}
 </div>
 

@@ -1,17 +1,20 @@
 <script>
-  export let date;
-  export let audioFileNames;
+  export let data;
 
   import Close from "./Close.svelte";
   import { createEventDispatcher } from "svelte";
   import AudioViz from "./AudioViz.svelte";
 
-  const audioFiles = audioFileNames.map((name) => `assets/sounds/${name}`);
+  // const audioFiles = audioFileNames.map((file) => );
 
   const dispatch = createEventDispatcher();
 
   function close() {
     dispatch("close");
+  }
+
+  function mkPath(file) {
+    return `assets/sounds/${file.file}`;
   }
 </script>
 
@@ -20,11 +23,13 @@
     <Close on:close={close} />
   </div>
 
-  <div class="date">{date}</div>
-  {#each audioFiles as audioFile}
-    <div class="audio-viz">
-      <AudioViz {audioFile} />
-    </div>
+  {#each Object.entries(data) as [date, dataPoint]}
+    <div class="date">{date}</div>
+    {#each dataPoint as audioFile}
+      <div class="audio-viz">
+        <AudioViz audioFile={mkPath(audioFile)} />
+      </div>
+    {/each}
   {/each}
 </div>
 
