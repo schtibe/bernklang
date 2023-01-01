@@ -26,6 +26,7 @@
         center: fromLonLat([7.4331, 46.9428]),
         zoom: 14,
         minZoom: 14,
+        maxZoom: 18,
       }),
     });
   };
