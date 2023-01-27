@@ -23,7 +23,9 @@
     <main class="info" class:is-open={isOpen}>
       <div>The sounds of Berne, Switzerland</div>
 
-      <div class="contrib">by Stefan Heinemann</div>
+      <div class="contrib">
+        <a href="mailto:stefan.heinemann@codedump.ch">by Stefan Heinemann</a>
+      </div>
     </main>
   </div>
 </div>
